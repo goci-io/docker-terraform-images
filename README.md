@@ -9,6 +9,8 @@ This repository contains Dockerfiles to build a version pinned environment to pl
 - [terraform-aws](aws), [latest tags](https://hub.docker.com/r/gocidocker/goci-terraform-aws/tags)
 
 
+This repository uses hub.docker.com's autobuild configuration. Find our images [here](https://hub.docker.com/u/gocidocker).
+
 ## Usage
 
 The following environment variables are generally used to provide runtime specific details:
@@ -28,6 +30,8 @@ To overwrite the terraform action executed on the modules, change the commands p
 
 #### Example
 
+This example runs terraform plan or apply with AWS enabled:
+
 ```
 docker run -e NAMESPACE=$(NAMESPACE) \
     -e STAGE=$(STAGE) \
@@ -36,6 +40,8 @@ docker run -e NAMESPACE=$(NAMESPACE) \
     -e AWS_DEFAULT_REGION \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
-    -i gocidocker/goci-terraform-aws \
+    -i gocidocker/goci-terraform-aws:v1.0 \
     [apply|plan]
 ```
+
+Please check for latest versions on hub.docker.com or under [releases](https://github.com/goci-io/docker-terraform-images/releases). Note the cloud provider suffix (eg: `-aws`). The docker tag is named equally to the version without the provider suffix.
