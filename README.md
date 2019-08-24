@@ -23,8 +23,21 @@ The following environment variables are generally used to provide runtime specif
 
 In addition you may need to put some extra environment variables into place for the cloud provider to work as expected.
 
+### Add new module
 The entrypoint of our docker images executes an apply on all subdirectories in the `/data` folder (volume). 
 You can specify the order in which modules are applied by prefixing the subdirectories with numbers for example.
+
+Each module requires a Makefile in the root with the following commands:
+```
+    init    Initialize or download module
+    plan    Run terraform plan
+    apply   Apply terraform plan
+    clean   Clean up dist files
+```
+
+To plan terraform code it is sufficient to just run `terraform plan`. All necessary configurations are passed to the CLI by default within the docker container.
+
+**Important:** You need to specify under which path/key the module should save its state file. Whenever you are running `terraform init` you need to pass `-backend-config=key=<module-name>/terraform.tfstate` to avoid collisions.
 
 To overwrite the terraform action executed on the modules, change the commands passed to the entrypoint.
 
