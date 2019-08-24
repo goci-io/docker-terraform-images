@@ -40,7 +40,7 @@ To plan terraform code it is sufficient to just run `terraform plan`. All necess
 
 **Important:** You need to specify under which path/key the module should save its state file. Whenever you are running `terraform init` you need to pass `-backend-config=key=<module-name>/terraform.tfstate` to avoid collisions.
 
-To overwrite the terraform action executed on the modules, change the commands passed to the entrypoint.
+To overwrite the terraform action executed on the modules, change the commands passed to the entrypoint. When executing with `destroy` action the modules are destroyed in the reverse order.
 
 #### Example
 
@@ -55,7 +55,7 @@ docker run -e NAMESPACE=$(NAMESPACE) \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
     -i gocidocker/terraform-k8s-aws:v1.0 \
-    [apply|plan]
+    [apply|plan|destroy]
 ```
 
 Please check for latest versions on hub.docker.com or under [releases](https://github.com/goci-io/docker-terraform-images/releases). Note the cloud provider suffix (eg: `-aws`). The docker tag is named equally to the version without the provider suffix.
