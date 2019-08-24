@@ -16,7 +16,7 @@ docker run \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
     -i gocidocker/terraform-k8s-aws:v1.0 \
-    [apply|plan]
+    [apply|plan|destroy]
 ```
 
 ### Binaries and Packages
