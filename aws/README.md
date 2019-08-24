@@ -6,6 +6,19 @@ Checkout [all terraform images](https://github.com/goci-io/docker-terraform-imag
 
 Read about [general usage guidelines](https://github.com/goci-io/docker-terraform-images#usage)
 
+```
+docker run \
+    -e NAMESPACE=$(NAMESPACE) \
+    -e STAGE=$(STAGE) \
+    -e REGION=$(REGION) \
+    -e AWS_REGION \
+    -e AWS_DEFAULT_REGION \
+    -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
+    -v <path_to_modules_dir>:/data \
+    -i gocidocker/terraform-k8s-aws:v1.0 \
+    [apply|plan]
+```
+
 ### Binaries and Packages
 
 - Terraform 0.12.6  
