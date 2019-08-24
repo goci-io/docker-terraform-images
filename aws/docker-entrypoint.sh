@@ -6,11 +6,11 @@ modules=/data
 
 # Variables to include in the tfenv process
 export TF_BUCKET="${NAMESPACE}-${STAGE}-terraform-state"
+export TF_BUCKET_REGION=${AWS_REGION}
 
 eval "$(tfenv)"
 
 # Variables to exclude in the tfenv process
-export TF_BUCKET_REGION=${AWS_REGION}
 export TF_DYNAMODB_TABLE="${NAMESPACE}-${STAGE}-terraform-state-lock"
 
 argName="-backend-config"
