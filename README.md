@@ -32,6 +32,7 @@ Each module requires a Makefile in the root with the following commands:
     init    Initialize or download module
     plan    Run terraform plan
     apply   Apply terraform plan
+    destroy Destroy provisioned resources
     clean   Clean up dist files
 ```
 

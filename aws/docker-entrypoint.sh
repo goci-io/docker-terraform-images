@@ -2,7 +2,16 @@
 set -e 
 
 action=${1:-plan}
-modules=/data
+if [[ $action == "destroy" ]]; then
+  modules=(`ls /data | sort -r`)
+else
+  modules=(`ls /data | sort`)
+fi
+
+if (( ${#modules[@]} == 0 )); then
+  echo "No modules found" >&2
+  exit 1
+fi
 
 # Variables to include in the tfenv process
 export TF_BUCKET="${NAMESPACE}-${STAGE}-terraform-state"
@@ -16,12 +25,14 @@ export TF_DYNAMODB_TABLE="${NAMESPACE}-${STAGE}-terraform-state-lock"
 argName="-backend-config"
 export TF_CLI_ARGS_init="${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_REGION} ${argName}=encrypt=true"
 export TF_CLI_ARGS_apply="-auto-approve"
+export TF_CLI_ARGS_destroy="-auto-approve"
 
-for d in ${modules}/*/ ; do
+# Execute modules
+for d in $modules ; do
   echo "Initializing $d"
-  make -C $d init
+  make -C /data/$d init
   echo "Run $action on $d"
-  make -C $d $action
+  make -C /data/$d $action
   echo "Finishing $d"
-  make -C $d clean
+  make -C /data/$d clean
 done

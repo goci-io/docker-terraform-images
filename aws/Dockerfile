@@ -50,4 +50,3 @@ VOLUME [ "/conf" ]
 RUN rm -rf /tmp/*
 
 ENTRYPOINT [ "/bin/bash", "/conf/docker-entrypoint.sh" ]
-CMD ["apply"]
