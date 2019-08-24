@@ -1,3 +1,4 @@
+mkfile_dir := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 export NAMESPACE ?= goci
 export CLOUD_PROVIDER ?= aws
@@ -11,3 +12,19 @@ build:
 
 run:
 	docker run --entrypoint=/bin/bash -it $(IMAGE_NAME)
+
+test:
+	docker run \
+		-e NAMESPACE=goci \
+		-e STAGE=testing \
+		-e REGION=eu1 \
+		-v $(mkfile_dir)/examples/$(CLOUD_PROVIDER):/data \
+		-i $(IMAGE_NAME) \
+		apply
+	docker run \
+		-e NAMESPACE=goci \
+		-e STAGE=testing \
+		-e REGION=eu1 \
+		-v $(mkfile_dir)/examples/$(CLOUD_PROVIDER):/data \
+		-i $(IMAGE_NAME) \
+		destroy
