@@ -33,14 +33,7 @@ RUN pip3 install awscli --upgrade --user --no-cache --no-warn-script-location \
 ENV TF_INPUT 0
 ENV TF_IN_AUTOMATION 1
 ENV TF_CLI_ARGS "-no-color"
-ENV TF_PROVIDER_AWS_VERSION "~> 2.24"
-ENV TF_PROVIDER_K8S_VERSION "~> 1.8"
 ENV TF_PLUGIN_CACHE_DIR /var/lib/cache/terraform
-
-# Pre-Download Terraform provider
-RUN echo "provider \"aws\" { version = \"${TF_PROVIDER_AWS_VERSION}\" }" > /conf/provider/aws.tf \
- && echo "provider \"kubernetes\" { version = \"${TF_PROVIDER_K8S_VERSION}\" }" > /conf/provider/k8s.tf \
- && cd /conf/provider && terraform init -backend=false
 
 COPY docker-entrypoint.sh /conf/docker-entrypoint.sh
 

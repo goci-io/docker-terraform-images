@@ -28,7 +28,7 @@ export TF_CLI_ARGS_apply="-auto-approve"
 export TF_CLI_ARGS_destroy="-auto-approve"
 
 # Execute modules
-for d in $modules ; do
+for d in ${modules[@]} ; do
   echo "Initializing $d"
   make -C /data/$d init
   echo "Run $action on $d"

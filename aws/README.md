@@ -27,15 +27,8 @@ docker run \
 - Kubectl 1.13.9  
 - [Kops](https://github.com/kubernetes/kops) 1.13.0  
 - [Helm](https://helm.sh/) 2.14.3  
-- Predownload Terraform AWS provider ~> 2.24  
-- Predownload Terraform Kubernetes provider ~> 1.8  
 - unzip make git bash python3
 - based on alpine 3.10
-
-To prevent downloading newer versions for terraform providers, specify the version for the provider in terraform using the following variables:
-
-- AWS provider version: `tf_provider_aws_version`  
-- Kubernetes provider version: `tf_provider_k8s_version`  
 
 ### Configuration
 
