@@ -47,7 +47,8 @@ Please note the following additional environment variables provided by the docke
 | TF_BUCKET_REGION | The region the S3 bucket will be created in |
 | TF_DYNAMODB_TABLE | The DynamoDB table used for locking (`<namespace>-<stage>-terraform-state-lock`) |
 | TF_CLI_ARGS_init | `-backend-config=bucket=${TF_BUCKET} -backend-config=encrypt=true -backend-config=region=${AWS_REGION}` |
-| TF_CLI_ARGS_apply | `-auto-approve` |
+| TF_CLI_ARGS_apply | `-auto-approve plan.tfstate` |
 | TF_CLI_ARGS_destroy | `-auto-approve` |
+| TF_CLI_ARGS_plan | `-out plan.tfstate` |
 
 Additionally you can access the bucket name in Terraform using `var.tf_bucket` and `var.tf_bucket_region`
