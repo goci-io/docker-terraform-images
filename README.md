@@ -11,6 +11,8 @@ This repository contains Dockerfiles to build a version pinned environment to pl
 
 This repository uses hub.docker.com's autobuild configuration. Find our images [here](https://hub.docker.com/u/gocidocker).
 
+In general these docker images are designed to provision a kubernetes (kops) cluster on a specific hosting provider. They also provide an environment where [terraform modules](https://github.com/search?q=topic%3Aterraform+org%3Agoci-io+fork%3Atrue) from [goci.io](https://goci.io) can be executed with ease and full binary support.  
+
 ## Usage
 
 The following environment variables are generally used to provide runtime specific details:
