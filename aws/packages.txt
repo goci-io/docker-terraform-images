@@ -1,0 +1,8 @@
+bash
+git
+make
+jq
+python3
+unzip
+tar
+keybase-client@testing

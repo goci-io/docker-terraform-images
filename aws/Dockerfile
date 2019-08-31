@@ -6,9 +6,11 @@ RUN mkdir -p /conf/provider \
  && mkdir -p /data \
  && mkdir -p /var/lib/cache/terraform
 
-RUN apk add --no-cache unzip make git bash python3
+COPY packages.txt /etc/apk/packages.txt
+RUN echo "@testing https://alpine.global.ssl.fastly.net/alpine/edge/testing" >> /etc/apk/repositories \
+ && apk add --update --no-cache $(grep -v '^#' /etc/apk/packages.txt)
 
-ADD https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip /tmp/terraform.zip
+ADD https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip /tmp/terraform.zip
 RUN unzip /tmp/terraform.zip -d /usr/local/bin \
  && chmod +x /usr/local/bin/terraform
 

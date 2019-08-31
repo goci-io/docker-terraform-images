@@ -21,14 +21,15 @@ docker run \
 
 ### Binaries and Packages
 
-- Terraform 0.12.6  
+- Terraform 0.12.7  
 - AWS CLI   
 - [tfenv](https://github.com/cloudposse/tfenv) 0.4.0  
 - Kubectl 1.13.9  
 - [Kops](https://github.com/kubernetes/kops) 1.13.0  
 - [Helm](https://helm.sh/) 2.14.3  
-- unzip make git bash python3
 - based on alpine 3.10
+
+Utilities: unzip, make, git, bash, jq, python3, keybase-client@testing
 
 ### Configuration
 
@@ -47,5 +48,6 @@ Please note the following additional environment variables provided by the docke
 | TF_DYNAMODB_TABLE | The DynamoDB table used for locking (`<namespace>-<stage>-terraform-state-lock`) |
 | TF_CLI_ARGS_init | `-backend-config=bucket=${TF_BUCKET} -backend-config=encrypt=true -backend-config=region=${AWS_REGION}` |
 | TF_CLI_ARGS_apply | `-auto-approve` |
+| TF_CLI_ARGS_destroy | `-auto-approve` |
 
 Additionally you can access the bucket name in Terraform using `var.tf_bucket` and `var.tf_bucket_region`
