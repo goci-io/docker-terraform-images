@@ -15,8 +15,21 @@ docker run \
     -e AWS_DEFAULT_REGION \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
-    -i gocidocker/terraform-k8s-aws:v1.0 \
+    -i gocidocker/terraform-k8s-aws:v1.1 \
     [apply|plan|destroy]
+```
+
+To run this container locally (eg: for debug purposes) you can execute the following:
+
+```
+docker run \
+    --entrypoint=/conf/local-start.sh \
+    -e NAMESPACE=goci \
+    -e STAGE=staging \
+    -e REGION=eu1 \
+    -e AWS_REGION=eu-central-1 \
+    -v <path_to_modules_dir>:/data \
+    -it gocidocker/terraform-k8s-aws:v1.1
 ```
 
 ### Binaries and Packages
