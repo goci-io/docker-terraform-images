@@ -24,11 +24,13 @@ export TF_DYNAMODB_TABLE="${NAMESPACE}-${STAGE}-terraform-state-lock"
 
 argName="-backend-config"
 export TF_CLI_ARGS_init="${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_REGION} ${argName}=encrypt=true"
-export TF_CLI_ARGS_apply="-auto-approve"
+export TF_CLI_ARGS_apply="-auto-approve plan.tfstate"
 export TF_CLI_ARGS_destroy="-auto-approve"
+export TF_CLI_ARGS_plan="-out plan.tfstate"
 
 # Execute modules
 for d in ${modules[@]} ; do
+  echo -e "\n"
   echo "Initializing $d"
   make -C /data/$d init
   echo "Run $action on $d"
