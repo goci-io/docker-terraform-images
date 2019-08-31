@@ -33,6 +33,11 @@ for d in ${modules[@]} ; do
   echo -e "\n"
   echo "Initializing $d"
   make -C /data/$d init
+  
+  if [[ "$action" == "apply" ]]; then
+    make -C /data/$d plan
+  fi
+
   echo "Run $action on $d"
   make -C /data/$d $action
   echo "Finishing $d"
