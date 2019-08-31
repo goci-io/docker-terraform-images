@@ -11,7 +11,8 @@ build:
 	docker build -t $(IMAGE_NAME) $(CLOUD_PROVIDER)
 
 run:
-	docker run --entrypoint=/bin/bash -it $(IMAGE_NAME)
+        # Additional environment variables are usually required
+	docker run --entrypoint=/conf/local-start.sh -it $(IMAGE_NAME)
 
 test:
 	docker run \
