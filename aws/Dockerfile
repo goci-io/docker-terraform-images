@@ -37,6 +37,7 @@ ENV TF_IN_AUTOMATION 1
 ENV TF_CLI_ARGS "-no-color"
 ENV TF_PLUGIN_CACHE_DIR /var/lib/cache/terraform
 
+COPY env.sh /conf/env.sh
 COPY docker-entrypoint.sh /conf/docker-entrypoint.sh
 COPY local-start.sh /conf/local-start.sh
 
