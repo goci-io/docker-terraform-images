@@ -8,14 +8,14 @@ Read about [general usage guidelines](https://github.com/goci-io/docker-terrafor
 
 ```
 docker run \
-    -e NAMESPACE=$(NAMESPACE) \
-    -e STAGE=$(STAGE) \
-    -e REGION=$(REGION) \
+    -e NAMESPACE \
+    -e STAGE \
+    -e REGION \
     -e AWS_REGION \
     -e AWS_DEFAULT_REGION \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
-    -i gocidocker/terraform-k8s-aws:v1.1 \
+    -i gocidocker/terraform-k8s-aws:v1.2 \
     [apply|plan|destroy]
 ```
 
@@ -29,7 +29,7 @@ docker run \
     -e REGION=eu1 \
     -e AWS_REGION=eu-central-1 \
     -v <path_to_modules_dir>:/data \
-    -it gocidocker/terraform-k8s-aws:v1.1
+    -it gocidocker/terraform-k8s-aws:v1.2
 ```
 
 ### Binaries and Packages
@@ -37,12 +37,12 @@ docker run \
 - Terraform 0.12.7  
 - AWS CLI   
 - [tfenv](https://github.com/cloudposse/tfenv) 0.4.0  
-- Kubectl 1.13.9  
+- Kubectl 1.13.10  
 - [Kops](https://github.com/kubernetes/kops) 1.13.0  
 - [Helm](https://helm.sh/) 2.14.3  
 - based on alpine 3.10
 
-Utilities: unzip, make, git, bash, jq, python3, keybase-client@testing
+Utilities: unzip, tar, make, git, bash, jq, python3, keybase-client@testing
 
 ### Configuration
 
@@ -65,4 +65,4 @@ Please note the following additional environment variables provided by the docke
 | TF_CLI_ARGS_plan | `-out plan.tfstate` |
 | AWS_ASSUME_ROLE_ARN | Created from `AWS_ACCOUNT_ID` if `AWS_ASSUME_ROLE_NAME` is set to a role name |
 
-Additionally you can access the bucket name in Terraform using `var.tf_bucket` and `var.tf_bucket_region`
+Additionally you can access the bucket details in Terraform using `var.tf_bucket` and `var.tf_bucket_region`. You will also have access to the assume role via `var.aws_assume_role_arn`.

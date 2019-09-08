@@ -6,7 +6,7 @@ This repository contains Dockerfiles to build a version pinned environment to pl
 
 ## Overview
 
-- [terraform-k8s-aws](aws), [latest tags](https://hub.docker.com/r/gocidocker/terraform-k8s-aws/tags)
+- [terraform-k8s-aws](aws/README.md), [latest tags](https://hub.docker.com/r/gocidocker/terraform-k8s-aws/tags)
 
 
 This repository uses hub.docker.com's autobuild configuration. Find our images [here](https://hub.docker.com/u/gocidocker).
@@ -49,14 +49,15 @@ To overwrite the terraform action executed on the modules, change the commands p
 This example runs terraform plan or apply on AWS:
 
 ```
-docker run -e NAMESPACE=$(NAMESPACE) \
-    -e STAGE=$(STAGE) \
-    -e REGION=$(REGION) \
+docker run \
+    -e NAMESPACE \
+    -e STAGE \
+    -e REGION \
     -e AWS_REGION \
     -e AWS_DEFAULT_REGION \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
-    -i gocidocker/terraform-k8s-aws:v1.0 \
+    -i gocidocker/terraform-k8s-aws:v1.2 \
     [apply|plan|destroy]
 ```
 
