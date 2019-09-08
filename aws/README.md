@@ -34,7 +34,7 @@ docker run \
 
 ### Binaries and Packages
 
-- Terraform 0.12.7  
+- Terraform 0.12.8  
 - AWS CLI   
 - [tfenv](https://github.com/cloudposse/tfenv) 0.4.0  
 - Kubectl 1.13.10  
