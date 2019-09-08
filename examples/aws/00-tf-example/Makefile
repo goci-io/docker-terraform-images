@@ -15,4 +15,4 @@ destroy:
 	terraform destroy
 
 clean:
-	rm -rf .terraform
+	rm -rf .terraform *.tfstate*
