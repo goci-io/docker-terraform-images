@@ -26,15 +26,17 @@ export TF_CLI_ARGS_plan="-out plan.tfstate"
 # Execute modules
 for d in ${modules[@]} ; do
   echo -e "\n"
+  cd /data/$d
+
   echo "Initializing $d"
-  make -C /data/$d init
+  make init
   
   if [[ "$action" == "apply" ]]; then
-    make -C /data/$d plan
+    make plan
   fi
 
   echo "Run $action on $d"
-  make -C /data/$d $action
+  make $action
   echo "Finishing $d"
-  make -C /data/$d clean
+  make clean
 done
