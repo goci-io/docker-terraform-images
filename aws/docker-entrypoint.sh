@@ -18,7 +18,7 @@ fi
 # Variables to exclude in the tfenv process
 
 argName="-backend-config"
-export TF_CLI_ARGS_init="${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_REGION} ${argName}=encrypt=true"
+export TF_CLI_ARGS_init="-no-color ${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_REGION} ${argName}=encrypt=true"
 export TF_CLI_ARGS_apply="-no-color -auto-approve plan.tfstate"
 export TF_CLI_ARGS_destroy="-no-color -auto-approve"
 export TF_CLI_ARGS_plan="-no-color -out plan.tfstate"
