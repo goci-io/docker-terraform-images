@@ -17,7 +17,7 @@ RUN unzip /tmp/terraform.zip -d /usr/local/bin \
 ADD https://github.com/cloudposse/tfenv/releases/download/0.4.0/tfenv_linux_amd64 /usr/local/bin/tfenv
 RUN chmod +x /usr/local/bin/tfenv
 
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.13.9/bin/linux/amd64/kubectl /usr/local/bin/kubectl
+ADD https://storage.googleapis.com/kubernetes-release/release/v1.13.10/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 RUN chmod +x /usr/local/bin/kubectl
 
 ADD https://github.com/kubernetes/kops/releases/download/1.13.0/kops-linux-amd64 /usr/local/bin/kops
