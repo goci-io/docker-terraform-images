@@ -1,5 +1,3 @@
-# This image should not depend on inhouse images (except official public ones)
-# Code in this project setups basic infrastructure for these things (eg: docker registry)
 FROM alpine:3.10
 
 RUN mkdir -p /conf/provider \
@@ -32,9 +30,9 @@ RUN pip3 install awscli --upgrade --user --no-cache --no-warn-script-location \
  && mv ~/.local/bin/aws /usr/local/bin/aws
 
 # Terraform CLI config and variables
+# Setup -no-color per command due to https://github.com/hashicorp/terraform/issues/14847
 ENV TF_INPUT 0
 ENV TF_IN_AUTOMATION 1
-ENV TF_CLI_ARGS "-no-color"
 ENV TF_PLUGIN_CACHE_DIR /var/lib/cache/terraform
 
 COPY env.sh /conf/env.sh

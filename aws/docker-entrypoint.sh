@@ -19,9 +19,9 @@ fi
 
 argName="-backend-config"
 export TF_CLI_ARGS_init="${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_REGION} ${argName}=encrypt=true"
-export TF_CLI_ARGS_apply="-auto-approve plan.tfstate"
-export TF_CLI_ARGS_destroy="-auto-approve"
-export TF_CLI_ARGS_plan="-out plan.tfstate"
+export TF_CLI_ARGS_apply="-no-color -auto-approve plan.tfstate"
+export TF_CLI_ARGS_destroy="-no-color -auto-approve"
+export TF_CLI_ARGS_plan="-no-color -out plan.tfstate"
 
 # Execute modules
 for d in ${modules[@]} ; do
