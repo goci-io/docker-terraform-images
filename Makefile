@@ -11,7 +11,7 @@ build:
 	docker build -t $(IMAGE_NAME) $(CLOUD_PROVIDER)
 
 run:
-    # Additional environment variables are usually required
+	# Additional environment variables are usually required
 	docker run --entrypoint=/conf/local-start.sh -it $(IMAGE_NAME)
 
 test:
