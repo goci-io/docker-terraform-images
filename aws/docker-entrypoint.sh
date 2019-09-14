@@ -15,10 +15,12 @@ fi
 
 . /conf/env.sh
 
-# Variables to exclude in the tfenv process
+encryptArg="-backend-config=encrypt=true"
+bucketArg="-backend-config=bucket=${TF_BUCKET}"
+regionArg="-backend-config=region=${AWS_REGION}"
+dynamodbArg="-backend-config=dynamodb_table=${TF_DYNAMODB_TABLE}"
 
-argName="-backend-config"
-export TF_CLI_ARGS_init="-no-color ${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_REGION} ${argName}=encrypt=true"
+export TF_CLI_ARGS_init="-no-color ${bucketArg} ${regionArg} ${encryptArg} ${dynamodbArg}"
 export TF_CLI_ARGS_apply="-no-color -auto-approve plan.tfstate"
 export TF_CLI_ARGS_destroy="-no-color -auto-approve"
 export TF_CLI_ARGS_plan="-no-color -out plan.tfstate"
@@ -27,16 +29,12 @@ export TF_CLI_ARGS_plan="-no-color -out plan.tfstate"
 for d in ${modules[@]} ; do
   echo -e "\n"
   cd /data/$d
-
-  echo "Initializing $d"
   make init
   
   if [[ "$action" == "apply" ]]; then
     make plan
   fi
 
-  echo "Run $action on $d"
   make $action
-  echo "Finishing $d"
   make clean
 done
