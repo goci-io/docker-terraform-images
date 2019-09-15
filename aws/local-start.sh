@@ -7,6 +7,9 @@ export TF_CLI_ARGS_init="${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_
 export TF_IN_AUTOMATION=""
 export TF_INPUT=1
 
-apk add aws-vault@cloudposse
-
-aws-vault exec ${AWS_PROFILE} --- /bin/bash
+if [[ "$AWS_VAULT_ENABLED" != "false" ]]; then
+    apk add aws-vault@cloudposse
+    aws-vault exec ${AWS_PROFILE} -- /bin/bash
+else
+    /bin/bash
+fi
