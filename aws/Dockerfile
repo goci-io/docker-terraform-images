@@ -2,6 +2,7 @@ FROM alpine:3.10
 
 RUN mkdir -p /conf/provider \
  && mkdir -p /data \
+ && mkdir -p /localhost \
  && mkdir -p /var/lib/cache/terraform
 
 COPY packages.txt /etc/apk/packages.txt
@@ -34,6 +35,10 @@ RUN pip3 install awscli --upgrade --user --no-cache --no-warn-script-location \
 ENV TF_INPUT 0
 ENV TF_IN_AUTOMATION 1
 ENV TF_PLUGIN_CACHE_DIR /var/lib/cache/terraform
+
+# Install the cloudposse alpine repository
+ADD https://apk.cloudposse.com/ops@cloudposse.com.rsa.pub /etc/apk/keys/
+RUN echo "@cloudposse https://apk.cloudposse.com/3.10/vendor" >> /etc/apk/repositories
 
 COPY env.sh /conf/env.sh
 COPY docker-entrypoint.sh /conf/docker-entrypoint.sh
