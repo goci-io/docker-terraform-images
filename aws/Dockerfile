@@ -46,8 +46,6 @@ COPY local-start.sh /conf/local-start.sh
 
 VOLUME [ "/data" ]
 VOLUME [ "/conf" ]
-VOLUME [ "/localhost" ]
-VOLUME [ "/var/lib/cache" ]
 
 RUN rm -rf /tmp/*
 
