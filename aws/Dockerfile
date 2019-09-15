@@ -35,6 +35,10 @@ ENV TF_INPUT 0
 ENV TF_IN_AUTOMATION 1
 ENV TF_PLUGIN_CACHE_DIR /var/lib/cache/terraform
 
+# Install the cloudposse alpine repository
+ADD https://apk.cloudposse.com/ops@cloudposse.com.rsa.pub /etc/apk/keys/
+RUN echo "@cloudposse https://apk.cloudposse.com/3.10/vendor" >> /etc/apk/repositories
+
 COPY env.sh /conf/env.sh
 COPY docker-entrypoint.sh /conf/docker-entrypoint.sh
 COPY local-start.sh /conf/local-start.sh
