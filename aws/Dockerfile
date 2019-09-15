@@ -2,6 +2,7 @@ FROM alpine:3.10
 
 RUN mkdir -p /conf/provider \
  && mkdir -p /data \
+ && mkdir -p /localhost \
  && mkdir -p /var/lib/cache/terraform
 
 COPY packages.txt /etc/apk/packages.txt
@@ -45,6 +46,8 @@ COPY local-start.sh /conf/local-start.sh
 
 VOLUME [ "/data" ]
 VOLUME [ "/conf" ]
+VOLUME [ "/localhost" ]
+VOLUME [ "/var/lib/cache" ]
 
 RUN rm -rf /tmp/*
 
