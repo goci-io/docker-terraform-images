@@ -5,4 +5,5 @@ jq
 python3
 unzip
 tar
+curl
 keybase-client@testing

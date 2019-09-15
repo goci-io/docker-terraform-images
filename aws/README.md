@@ -42,7 +42,7 @@ docker run \
 - [Helm](https://helm.sh/) 2.14.3  
 - based on alpine 3.10
 
-Utilities: unzip, tar, make, git, bash, jq, python3, keybase-client@testing
+Utilities: unzip, tar, make, git, curl, bash, jq, python3, keybase-client@testing
 
 ### Configuration
 
