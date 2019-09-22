@@ -66,6 +66,8 @@ Please note the following additional environment variables provided by the docke
 | TF_CLI_ARGS_apply | `-auto-approve plan.tfstate` |
 | TF_CLI_ARGS_destroy | `-auto-approve` |
 | TF_CLI_ARGS_plan | `-out plan.tfstate` |
-| AWS_ASSUME_ROLE_ARN | Created from `AWS_ACCOUNT_ID` if `AWS_ASSUME_ROLE_NAME` is set to a role name |
+| KOPS_STATE_STORE | State store of kops, sourced from ENV vars `s3://<namespace>-<stage>-kops-state-<region>` | 
+| KOPS_CLUSTER_NAME | Name of cluster, sourced from ENV vars `<stage>.<region>.<namespace>` | 
+| AWS_ASSUME_ROLE_ARN | Created from `AWS_ACCOUNT_ID` if `AWS_ASSUME_ROLE_NAME` is set to a role name |
 
 Additionally you can access the bucket details in Terraform using `var.tf_bucket` and `var.tf_bucket_region`. You will also have access to the assume role via `var.aws_assume_role_arn`.
