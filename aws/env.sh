@@ -7,7 +7,7 @@ if [[ -z "$TF_BUCKET" ]]; then
 fi
 
 if [[ -z "$KOPS_CLUSTER_NAME" ]]; then
-    export KOPS_STATE_STORE="${NAMESPACE}-${STAGE}-kops-state-${REGION}"
+    export KOPS_STATE_STORE="s3://${NAMESPACE}-${STAGE}-kops-state-${REGION}"
     export KOPS_CLUSTER_NAME="${STAGE}.${REGION}.${NAMESPACE}"
 fi
 
