@@ -65,4 +65,4 @@ Please note the following additional environment variables provided by the docke
 | TF_CLI_ARGS_init | `-backend-config=bucket=${TF_BUCKET} -backend-config=encrypt=true -backend-config=region=${AWS_REGION}` |
 | AWS_ASSUME_ROLE_ARN | Created from `AWS_ACCOUNT_ID` if `AWS_ASSUME_ROLE_NAME` is set to a role name |
 
-Read about [environment variables](../README.md#environment) provided by all docker images.
+Read about [environment variables](https://github.com/goci-io/docker-terraform-images/blob/master/README.md#environment) provided by all docker images.
