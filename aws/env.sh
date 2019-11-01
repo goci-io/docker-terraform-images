@@ -8,7 +8,7 @@ fi
 
 if [[ -z "$KOPS_CLUSTER_NAME" ]]; then
     export KOPS_STATE_STORE="s3://${NAMESPACE}-${STAGE}-kops-state-${REGION}"
-    export KOPS_CLUSTER_NAME="${STAGE}.${REGION}.${NAMESPACE}"
+    export KOPS_CLUSTER_NAME="${STAGE}.${REGION}.${NAMESPACE}.${CLUSTER_TLD:-io}"
 fi
 
 if [[ ! -z "$AWS_ASSUME_ROLE_NAME" ]]; then
