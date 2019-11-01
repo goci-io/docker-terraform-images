@@ -9,20 +9,26 @@ COPY packages.txt /etc/apk/packages.txt
 RUN echo "@testing https://alpine.global.ssl.fastly.net/alpine/edge/testing" >> /etc/apk/repositories \
  && apk add --update --no-cache $(grep -v '^#' /etc/apk/packages.txt)
 
-ADD https://releases.hashicorp.com/terraform/0.12.8/terraform_0.12.8_linux_amd64.zip /tmp/terraform.zip
+ENV TERRAFORM_VERSION "0.12.13"
+ENV KUBERNETES_VERSION "1.14.8"
+ENV KUBECTL_VERSION "1.15.5"
+ENV KOPS_VERSION "1.14.0"
+ENV HELM_VERSION "2.15.2"
+
+ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /tmp/terraform.zip
 RUN unzip /tmp/terraform.zip -d /usr/local/bin \
  && chmod +x /usr/local/bin/terraform
 
 ADD https://github.com/cloudposse/tfenv/releases/download/0.4.0/tfenv_linux_amd64 /usr/local/bin/tfenv
 RUN chmod +x /usr/local/bin/tfenv
 
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.13.10/bin/linux/amd64/kubectl /usr/local/bin/kubectl
+ADD https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 RUN chmod +x /usr/local/bin/kubectl
 
-ADD https://github.com/kubernetes/kops/releases/download/1.13.0/kops-linux-amd64 /usr/local/bin/kops
+ADD https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}}/kops-linux-amd64 /usr/local/bin/kops
 RUN chmod +x /usr/local/bin/kops
 
-ADD https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz /tmp/helm.tar.gz
+ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz /tmp/helm.tar.gz
 RUN cd /tmp && tar -zxvf /tmp/helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
  && chmod +x /usr/local/bin/helm
