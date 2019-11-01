@@ -15,15 +15,32 @@ In general these docker images are designed to provision a kubernetes (kops) clu
 
 ## Usage
 
-The following environment variables are generally used to provide runtime specific details:
+The following environment variables are generally needed to provide runtime specific details:
 
 | Name | Description |
-|-----------|-----------------------------------------------------------|
+|-----------|--------------------------------------------------------|
 | NAMESPACE | The namespace for this configuration (eg: goci) |
 | STAGE | The stage this configuration is for (eg: staging or prod) |
 | REGION | The region this configuration is for (eg: eu1) |
 
 In addition you may need to put some extra environment variables into place for the cloud provider to work as expected.
+By default `.io` is used as cluster top level domain. The TLD is used for the cluster name for example. You can overwrite the cluster TLD by setting `CLUSTER_TLD`.
+
+### Environment
+
+| Name | Description |
+|-----------|--------------------------------------------------------|
+| TERRAFORM_VERSION | Version of terraform used |
+| KUBECTL_VERSION | Version of kubectl used |
+| KOPS_VERSION | If kops is managing cluster resources the version used |
+| HELM_VERSION | Kubernetes package manager version used |
+| TF_CLI_ARGS_apply | `-auto-approve plan.tfstate` |
+| TF_CLI_ARGS_destroy | `-auto-approve` |
+| TF_CLI_ARGS_plan | `-out plan.tfstate` |
+| KOPS_STATE_STORE | Reference to S3 bucket with kops state store (`<namespace>-<stage>-kops-state-<region>`) |
+| KOPS_CLUSTER_NAME | Name of the kops managed cluster (`<stage>.<region>.<namespace>.<cluster_tld>`) |
+
+These variables can also be accessed using terraform variables (lower case names).
 
 ### Add new module
 The entrypoint of our docker images executes an apply on all subdirectories in the `/data` folder (volume). 
@@ -57,7 +74,7 @@ docker run \
     -e AWS_DEFAULT_REGION \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
-    -i gocidocker/terraform-k8s-aws:v1.3 \
+    -i gocidocker/terraform-k8s-aws:v1.4 \
     [apply|plan|destroy]
 ```
 
