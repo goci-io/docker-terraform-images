@@ -59,6 +59,10 @@ Please note the following additional environment variables provided by the docke
 
 | Name | Default and description | 
 |-----------------|-----------------------------------------------------------------------|
+| TF_BUCKET | Name of the S3 bucket (`<namespace>-<stage>-terraform-state`) |
+| TF_BUCKET_REGION | The region the S3 bucket will be created in |
+| TF_DYNAMODB_TABLE | The DynamoDB table used for locking (`<namespace>-<stage>-terraform-state-lock`) |
+| TF_CLI_ARGS_init | `-backend-config=bucket=${TF_BUCKET} -backend-config=encrypt=true -backend-config=region=${AWS_REGION}` |
 | AWS_ASSUME_ROLE_ARN | Created from `AWS_ACCOUNT_ID` if `AWS_ASSUME_ROLE_NAME` is set to a role name |
 
 Read about [environment variables](../README.md#environment) provided by all docker images.
