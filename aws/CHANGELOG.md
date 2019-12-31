@@ -2,6 +2,21 @@
 
 Each release corresponds to a docker tag. The docker tag convention is `<version>-aws`
 
+## [v1.5](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.5-aws)
+
+### Updates
+- `kubectl` updated to 1.15.7  
+- `kops` updated to 1.15.0  
+- `kubernetes` version set to 1.15.7  
+- `terraform` updated to 0.12.18  
+- `helm` updated to 3.0.2 (finally without tiller)  
+
+### Fixes
+none
+
+### Migration
+Note the update of apiGroup when updating the [kops cluster](https://github.com/goci-io/aws-kops-cluster/commit/55b44c527303b78920690c116ca9da764d1ba2a8) with terraform.
+
 ## [v1.4](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.4-aws)
 
 ### Updates

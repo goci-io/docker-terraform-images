@@ -15,7 +15,7 @@ docker run \
     -e AWS_DEFAULT_REGION \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
-    -i gocidocker/terraform-k8s-aws:v1.4 \
+    -i gocidocker/terraform-k8s-aws:v1.5 \
     [apply|plan|destroy]
 ```
 
@@ -30,7 +30,7 @@ docker run --entrypoint=/conf/local-start.sh \
     -v ${HOME}/.aws:/root/.aws:ro \
     -v ${HOME}/.awsvault:/root/.awsvault \
     -v <path_to_modules_dir>:/data \
-    -it gocidocker/terraform-k8s-aws:v1.4 \
+    -it gocidocker/terraform-k8s-aws:v1.5 \
 ```
 
 Running this container locally it will install [aws-vault](https://github.com/99designs/aws-vault) and asks you to unlock your aws-vault keys. This behaviour is enabled until `AWS_VAULT_ENABLED` is set to `false`. You will need to mount the `.aws` and `.awsvault` directory into the container.
