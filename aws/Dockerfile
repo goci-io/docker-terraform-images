@@ -9,11 +9,11 @@ COPY packages.txt /etc/apk/packages.txt
 RUN echo "@testing https://alpine.global.ssl.fastly.net/alpine/edge/testing" >> /etc/apk/repositories \
  && apk add --update --no-cache $(grep -v '^#' /etc/apk/packages.txt)
 
-ENV TERRAFORM_VERSION "0.12.13"
-ENV KUBERNETES_VERSION "1.14.8"
-ENV KUBECTL_VERSION "1.15.5"
-ENV KOPS_VERSION "1.14.0"
-ENV HELM_VERSION "2.15.2"
+ENV TERRAFORM_VERSION "0.12.18"
+ENV KUBERNETES_VERSION "1.15.7"
+ENV KUBECTL_VERSION "1.15.7"
+ENV KOPS_VERSION "1.15.0"
+ENV HELM_VERSION "3.0.2"
 
 ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /tmp/terraform.zip
 RUN unzip /tmp/terraform.zip -d /usr/local/bin \
@@ -41,10 +41,6 @@ RUN pip3 install awscli --upgrade --user --no-cache --no-warn-script-location \
 ENV TF_INPUT 0
 ENV TF_IN_AUTOMATION 1
 ENV TF_PLUGIN_CACHE_DIR /var/lib/cache/terraform
-
-# Install the cloudposse alpine repository
-ADD https://apk.cloudposse.com/ops@cloudposse.com.rsa.pub /etc/apk/keys/
-RUN echo "@cloudposse https://apk.cloudposse.com/3.10/vendor" >> /etc/apk/repositories
 
 COPY env.sh /conf/env.sh
 COPY docker-entrypoint.sh /conf/docker-entrypoint.sh

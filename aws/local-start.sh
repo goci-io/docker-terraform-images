@@ -7,6 +7,8 @@ export TF_CLI_ARGS_init="${argName}=bucket=${TF_BUCKET} ${argName}=region=${AWS_
 export TF_IN_AUTOMATION=""
 export TF_INPUT=1
 
+curl -L -o ./aws-vault https://github.com/99designs/aws-vault/releases/download/v4.2.0/aws-vault-linux-amd64
+
 if [[ "$AWS_VAULT_ENABLED" != "false" ]]; then
     echo "Installing and setting up aws-vault"
     export AWS_PROFILE=${AWS_PROFILE:-"$NAMESPACE-$STAGE"}
@@ -16,10 +18,9 @@ if [[ "$AWS_VAULT_ENABLED" != "false" ]]; then
     export AWS_VAULT_SERVER_ENABLED=false
     export AWS_VAULT_BACKEND=file
 
-    apk add aws-vault@cloudposse
     echo "Spawing bash using aws-vault $AWS_PROFILE"
     echo "Please unlock your stored aws-vault key"
-    aws-vault exec ${AWS_PROFILE} -- /bin/bash
+    ./aws-vault exec ${AWS_PROFILE} -- /bin/bash
 else
     /bin/bash
 fi
