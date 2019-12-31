@@ -22,7 +22,7 @@ run:
 		-v $(HOME)/.aws:/root/.aws:ro \
 		-v $(HOME)/.awsvault:/root/.awsvault \
 		-v $(mkfile_dir)/examples/$(CLOUD_PROVIDER):/data \
-		-it $(IMAGE_NAME)
+		-it gocidocker/$(IMAGE_NAME):v1.4
 
 test:
 	docker run \
