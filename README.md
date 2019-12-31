@@ -79,3 +79,10 @@ docker run \
 ```
 
 Please check for latest versions on hub.docker.com or under [releases](https://github.com/goci-io/docker-terraform-images/releases). Note the cloud provider suffix (eg: `-aws`). The docker tag is named equally to the version without the provider suffix.
+
+
+### Contribution
+
+We are always happy to get feedback and support on improving the docker images and keeping binaries up to date.
+Releases are done by the maintainer of this repository. A merge into the master will be considered to be in the upcoming release except there is already a stable and tested preview release available which does not require the changes.
+
