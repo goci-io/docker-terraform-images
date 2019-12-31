@@ -9,7 +9,8 @@ export TF_INPUT=1
 
 if [[ "$AWS_VAULT_ENABLED" != "false" ]]; then
     echo "Installing and setting up aws-vault"
-    sudo curl -L -o /usr/local/bin/aws-vault https://github.com/99designs/aws-vault/releases/download/v4.2.0/aws-vault-linux-amd64
+    curl -L -o /conf/provider/aws-vault https://github.com/99designs/aws-vault/releases/download/v4.2.0/aws-vault-linux-amd64
+    chmod +x /conf/provider/aws-vault
 
     export AWS_PROFILE=${AWS_PROFILE:-"$NAMESPACE-$STAGE"}
     export AWS_DEFAULT_PROFILE=${AWS_PROFILE}
@@ -20,7 +21,7 @@ if [[ "$AWS_VAULT_ENABLED" != "false" ]]; then
 
     echo "Spawing bash using aws-vault $AWS_PROFILE"
     echo "Please unlock your stored aws-vault key"
-    aws-vault exec ${AWS_PROFILE} -- /bin/bash
+    /conf/provider/aws-vault exec ${AWS_PROFILE} -- /bin/bash
 else
     /bin/bash
 fi
