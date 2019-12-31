@@ -83,6 +83,6 @@ Please check for latest versions on hub.docker.com or under [releases](https://g
 
 ### Contribution
 
-We are always happy to get feedback and support on improving the docker images and keeping binaries up to date.
+We are always happy to get feedback and support on improving the docker images and keeping binaries up to date. You can contribute by opening pull requests and give feedback or suggestions for improvements via creating a [new issue](https://github.com/goci-io/aws-kops-cluster/issues/new). 
 Releases are done by the maintainer of this repository. A merge into the master will be considered to be in the upcoming release except there is already a stable and tested preview release available which does not require the changes.
 
