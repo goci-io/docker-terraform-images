@@ -5,12 +5,16 @@ export STAGE ?= staging
 export REGION ?= eu1
 export CLOUD_PROVIDER ?= aws
 export IMAGE_NAME ?= $(NAMESPACE)-terraform-$(CLOUD_PROVIDER)
+export VERSION ?= v1.5
 
 init:
 	# Do nothing
 
 build:
 	docker build -t $(IMAGE_NAME) $(CLOUD_PROVIDER)
+
+release: build
+	docker tag $(IMAGE_NAME) gocidocker/$(IMAGE_NAME):$(VERSION)
 
 run:
 	# Additional environment variables are usually required
@@ -22,7 +26,7 @@ run:
 		-v $(HOME)/.aws:/root/.aws:ro \
 		-v $(HOME)/.awsvault:/root/.awsvault \
 		-v $(mkfile_dir)/examples/$(CLOUD_PROVIDER):/data \
-		-it gocidocker/$(IMAGE_NAME):v1.4
+		-it gocidocker/$(IMAGE_NAME):$(VERSION)
 
 test:
 	docker run \
