@@ -31,7 +31,9 @@ RUN chmod +x /usr/local/bin/kops
 ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz /tmp/helm.tar.gz
 RUN cd /tmp && tar -zxvf /tmp/helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
- && chmod +x /usr/local/bin/helm
+ && chmod +x /usr/local/bin/helm \
+ && helm repo add stable https://kubernetes-charts.storage.googleapis.com \
+ && helm repo update
 
 RUN pip3 install awscli --upgrade --user --no-cache --no-warn-script-location \
  && mv ~/.local/bin/aws /usr/local/bin/aws
