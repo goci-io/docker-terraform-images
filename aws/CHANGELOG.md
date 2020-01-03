@@ -2,6 +2,12 @@
 
 Each release corresponds to a docker tag. The docker tag convention is `<version>-aws`
 
+## v1.6
+
+### Updates
+- `TF_FLAT_MODULE` to allow running action on the `/data` directory only  
+- add stable helm repo and update the helm repo on build  
+
 ## [v1.5](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.5-aws)
 
 ### Updates
