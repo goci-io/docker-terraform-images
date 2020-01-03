@@ -8,6 +8,10 @@ else
   modules=(`ls /data | sort`)
 fi
 
+if [[ "$TF_FLAT_MODULE" != "1" ]]; then
+  modules=( "" )
+fi
+
 if (( ${#modules[@]} == 0 )); then
   echo "No modules found" >&2
   exit 1

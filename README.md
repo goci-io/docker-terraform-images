@@ -37,6 +37,7 @@ By default `.io` is used as cluster top level domain. The TLD is used for the cl
 | TF_CLI_ARGS_apply | `-auto-approve plan.tfstate` |
 | TF_CLI_ARGS_destroy | `-auto-approve` |
 | TF_CLI_ARGS_plan | `-out plan.tfstate` |
+| TF_FLAT_MODULE | If set to `1` runs the specified action only on the /data directory |
 | KOPS_STATE_STORE | Reference to S3 bucket with kops state store (`<namespace>-<stage>-kops-state-<region>`) |
 | KOPS_CLUSTER_NAME | Name of the kops managed cluster (`<stage>.<region>.<namespace>.<cluster_tld>`) |
 
