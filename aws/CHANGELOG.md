@@ -13,11 +13,15 @@ A temporary branch, not merged to upstream yet, was used to build the terraform 
 - `kubectl` updated to 1.15.9  
 - `terraform` updated to 0.12.20  
 - `TF_FLAT_MODULE` to allow running action on the `/data` directory only  
+- terraform plugin cache changed to `var/cache/terraform`  
 - add stable helm repo and update the helm repo on build  
 - provider support for [helm3](https://github.com/terraform-providers/terraform-provider-helm/pull/378) and terraform  
 
 ### Fixes
 none
+
+### Migration
+Terraform plugin cache directory moved to `/var/cache/terraform`
 
 ## [v1.5](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.5-aws)
 
