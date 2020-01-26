@@ -4,9 +4,20 @@ Each release corresponds to a docker tag. The docker tag convention is `<version
 
 ## v1.6
 
+### [v1.6-rc1](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.6-rc1-aws)
+
+This is a release candidate for version 1.6 containing full helm 3 support for Terraform.
+A temporary branch, not merged to upstream yet, was used to build the terraform plugin binary for helm 3.
+
 ### Updates
+- `kubectl` updated to 1.15.9  
+- `terraform` updated to 0.12.20  
 - `TF_FLAT_MODULE` to allow running action on the `/data` directory only  
 - add stable helm repo and update the helm repo on build  
+- provider support for [helm3](https://github.com/terraform-providers/terraform-provider-helm/pull/378) and terraform  
+
+### Fixes
+none
 
 ## [v1.5](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.5-aws)
 
