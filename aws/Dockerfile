@@ -29,6 +29,8 @@ ADD https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-li
 RUN chmod +x /usr/local/bin/kops
 
 ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz /tmp/helm.tar.gz
+COPY terraform-provider-helm /var/cache/terraform/linux_amd64/terraform-provider-helm_v0.10.4_x4
+
 RUN cd /tmp && tar -zxvf /tmp/helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
  && chmod +x /usr/local/bin/helm \
@@ -42,7 +44,7 @@ RUN pip3 install awscli --upgrade --user --no-cache --no-warn-script-location \
 # Setup -no-color per command due to https://github.com/hashicorp/terraform/issues/14847
 ENV TF_INPUT 0
 ENV TF_IN_AUTOMATION 1
-ENV TF_PLUGIN_CACHE_DIR /var/lib/cache/terraform
+ENV TF_PLUGIN_CACHE_DIR /var/cache/terraform
 
 COPY env.sh /conf/env.sh
 COPY docker-entrypoint.sh /conf/docker-entrypoint.sh
