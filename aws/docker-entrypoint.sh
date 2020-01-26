@@ -8,7 +8,7 @@ else
   modules=(`ls /data | sort`)
 fi
 
-if [[ "$TF_FLAT_MODULE" != "1" ]]; then
+if [[ "$TF_FLAT_MODULE" == "1" ]]; then
   modules=( "" )
 fi
 
