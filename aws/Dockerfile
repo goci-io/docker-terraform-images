@@ -9,8 +9,8 @@ COPY packages.txt /etc/apk/packages.txt
 RUN echo "@testing https://alpine.global.ssl.fastly.net/alpine/edge/testing" >> /etc/apk/repositories \
  && apk add --update --no-cache $(grep -v '^#' /etc/apk/packages.txt)
 
-ENV TERRAFORM_VERSION "0.12.18"
-ENV KUBERNETES_VERSION "1.15.7"
+ENV TERRAFORM_VERSION "0.12.20"
+ENV KUBERNETES_VERSION "1.15.9"
 ENV KUBECTL_VERSION "1.15.7"
 ENV KOPS_VERSION "1.15.0"
 ENV HELM_VERSION "3.0.2"
