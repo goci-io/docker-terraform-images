@@ -2,7 +2,20 @@
 
 Each release corresponds to a docker tag. The docker tag convention is `<version>-aws`
 
-### [v1.6](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.6-aws)
+## [v1.6](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.6-aws)
+
+See changes of [v1.6-rc1](#v16-rc1). This release removes the temporary binary as the the official helm terraform plugin supports now [Helm 3](https://github.com/terraform-providers/terraform-provider-helm/releases/tag/v1.0.0)
+
+### Updates
+- `kubectl` updated to 1.15.10  
+- `kubernetes` updated to 1.15.10  
+- `kops` updated to 1.15.2  
+- `helm` updated to 3.1.0  
+
+### [v1.6-rc1](https://github.com/goci-io/docker-terraform-images/releases/tag/v1.6-rc1-aws)
+
+This is a release candidate for version 1.6 containing full helm 3 support for Terraform.
+A temporary branch, not merged to upstream yet, was used to build the terraform plugin binary for helm 3.
 
 ### Updates
 - `kubectl` updated to 1.15.9  
