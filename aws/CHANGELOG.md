@@ -7,8 +7,8 @@ Each release corresponds to a docker tag. The docker tag convention is `<version
 See changes of [v1.6](#v16). This release removes the temporary binary as the the official helm terraform plugin supports now [Helm 3](https://github.com/terraform-providers/terraform-provider-helm/releases/tag/v1.0.0)
 
 ### Updates
+- kubernetes version env var set to 1.15.10  
 - `kubectl` updated to 1.15.10  
-- `kubernetes` updated to 1.15.10  
 - `kops` updated to 1.15.2  
 - `helm` updated to 3.1.0  
 - `alpine` updated to 3.11  
