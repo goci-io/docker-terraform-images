@@ -37,13 +37,13 @@ Running this container locally it will install [aws-vault](https://github.com/99
 
 ### Binaries and Packages
 
-- Terraform 0.12.18  
+- Terraform 0.12.20  
 - AWS CLI   
 - [tfenv](https://github.com/cloudposse/tfenv) 0.4.0  
-- [Kubectl](https://github.com/kubernetes/kubectl) 1.15.7  
-- [Kops](https://github.com/kubernetes/kops) 1.15.0  
-- [Helm](https://helm.sh/) 3.0.2  
-- based on alpine 3.10
+- [Kubectl](https://github.com/kubernetes/kubectl) 1.15.10  
+- [Kops](https://github.com/kubernetes/kops) 1.15.2  
+- [Helm](https://helm.sh/) 3.1.0  
+- based on alpine 3.11
 
 Utilities: unzip, tar, make, git, curl, bash, jq, python3, keybase-client@testing
 
