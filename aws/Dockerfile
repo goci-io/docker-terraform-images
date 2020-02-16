@@ -37,8 +37,6 @@ ADD https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-li
 RUN chmod +x /usr/local/bin/kops
 
 ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz /tmp/helm.tar.gz
-COPY terraform-provider-helm /var/cache/terraform/linux_amd64/terraform-provider-helm_v0.10.4_x4
-
 RUN cd /tmp && tar -zxvf /tmp/helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
  && chmod +x /usr/local/bin/helm \
