@@ -18,10 +18,10 @@ LABEL org.label-schema.name="terraform-k8s-aws" \
       org.label-schema.schema-version="1.0"
 
 ENV TERRAFORM_VERSION "0.12.20"
-ENV KUBERNETES_VERSION "1.15.9"
-ENV KUBECTL_VERSION "1.15.7"
-ENV KOPS_VERSION "1.15.0"
-ENV HELM_VERSION "3.0.2"
+ENV KUBERNETES_VERSION "1.15.10"
+ENV KUBECTL_VERSION "1.15.10"
+ENV KOPS_VERSION "1.15.2"
+ENV HELM_VERSION "3.1.0"
 
 ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /tmp/terraform.zip
 RUN unzip /tmp/terraform.zip -d /usr/local/bin \
@@ -37,8 +37,6 @@ ADD https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-li
 RUN chmod +x /usr/local/bin/kops
 
 ADD https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz /tmp/helm.tar.gz
-COPY terraform-provider-helm /var/cache/terraform/linux_amd64/terraform-provider-helm_v0.10.4_x4
-
 RUN cd /tmp && tar -zxvf /tmp/helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
  && chmod +x /usr/local/bin/helm \
