@@ -5,7 +5,7 @@ export STAGE ?= staging
 export REGION ?= eu1
 export CLOUD_PROVIDER ?= aws
 export IMAGE_NAME ?= $(NAMESPACE)-terraform-$(CLOUD_PROVIDER)
-export VERSION ?= v1.5
+export VERSION ?= v1.7
 
 init:
 	# Do nothing
