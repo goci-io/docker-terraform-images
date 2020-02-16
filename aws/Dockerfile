@@ -18,10 +18,10 @@ LABEL org.label-schema.name="terraform-k8s-aws" \
       org.label-schema.schema-version="1.0"
 
 ENV TERRAFORM_VERSION "0.12.20"
-ENV KUBERNETES_VERSION "1.15.9"
-ENV KUBECTL_VERSION "1.15.7"
-ENV KOPS_VERSION "1.15.0"
-ENV HELM_VERSION "3.0.2"
+ENV KUBERNETES_VERSION "1.15.10"
+ENV KUBECTL_VERSION "1.15.10"
+ENV KOPS_VERSION "1.15.2"
+ENV HELM_VERSION "3.1.0"
 
 ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /tmp/terraform.zip
 RUN unzip /tmp/terraform.zip -d /usr/local/bin \
