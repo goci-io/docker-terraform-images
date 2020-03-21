@@ -9,6 +9,9 @@ COPY packages.txt /etc/apk/packages.txt
 RUN echo "@testing https://alpine.global.ssl.fastly.net/alpine/edge/testing" >> /etc/apk/repositories \
  && apk add --update --no-cache $(grep -v '^#' /etc/apk/packages.txt)
 
+# Supress global advices to shorten CI outputs
+RUN git config --global advice.detachedHead false
+
 LABEL org.label-schema.name="terraform-k8s-aws" \
       org.label-schema.description="Terraform image to provision infrastructure on AWS with kops" \
       org.label-schema.vcs-url="https://github.com/goci-io/docker-terraform-images" \
