@@ -12,12 +12,13 @@ RUN echo "@testing https://alpine.global.ssl.fastly.net/alpine/edge/testing" >> 
 # Supress global advices to shorten CI outputs
 RUN git config --global advice.detachedHead false
 
+LABEL authors="Tim Gatzemeier"
 LABEL org.label-schema.name="terraform-k8s-aws" \
       org.label-schema.description="Terraform image to provision infrastructure on AWS with kops" \
       org.label-schema.vcs-url="https://github.com/goci-io/docker-terraform-images" \
       org.label-schema.url="https://goci.io/" \
       org.label-schema.vendor="goci.io" \
-      org.label-schema.version="1.6" \
+      org.label-schema.version="1.8" \
       org.label-schema.schema-version="1.0"
 
 ENV TERRAFORM_VERSION "0.12.20"

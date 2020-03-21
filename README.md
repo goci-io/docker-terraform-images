@@ -75,7 +75,7 @@ docker run \
     -e AWS_DEFAULT_REGION \
     -e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI \
     -v <path_to_modules_dir>:/data \
-    -i gocidocker/terraform-k8s-aws:v1.7 \
+    -i gocidocker/terraform-k8s-aws:v1.8 \
     [apply|plan|destroy]
 ```
 
