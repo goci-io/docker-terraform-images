@@ -45,7 +45,7 @@ Running this container locally it will install [aws-vault](https://github.com/99
 - [Helm](https://helm.sh/) 3.1.0  
 - based on alpine 3.11
 
-Utilities: unzip, tar, make, git, curl, bash, jq, python3, keybase-client@testing
+Utilities: unzip, tar, make, git, curl, bash, jq, openssh, python3, keybase-client@testing
 
 ### Configuration
 
